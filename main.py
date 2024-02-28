@@ -8,7 +8,7 @@ set_default_color_theme("blue")
 
 # Main window
 window = CTk()
-window.geometry("400x400+800+400")
+window.geometry("400x400+700+400")
 window.title("Taskman")
 window.resizable(False, False)
 
@@ -20,23 +20,21 @@ def add_task():
     entry_task.delete(0, END)
     entry_reward.delete(0, END)
     # Frame for one entry to a list
-    one_entry_frame = CTkFrame(frame_task_list)
-    one_entry_frame.pack(fill=BOTH, padx=10)
+    one_entry_frame = CTkFrame(frame_task_list, height=80)
+    one_entry_frame.pack(fill="x")
 
     label_task = CTkLabel(one_entry_frame, text=task_text, font=("Helvetica", 13))
-    label_task.grid(row=0, column=0)
-
-    button_task = CTkButton(one_entry_frame, text="Done", font=("Helvetica", 10, "bold"), width=50, corner_radius=40, height=20)
-    button_task.grid(row=0, column=1, padx=(220, 0))
+    label_task.place(relx=0.02, rely=0.01)
+    button_task = CTkButton(one_entry_frame, text="Done", font=("Helvetica", 10, "bold"), width=50, corner_radius=50, height=15)
+    button_task.place(relx=0.8, rely=0.01)
 
     label_reward = CTkLabel(one_entry_frame, text=reward_text, font=("Helvetica", 13,))
-    label_reward.grid(row=1, column=0)
+    label_reward.place(relx=0.02, rely=0.28)
+    button_reward = CTkButton(one_entry_frame, text="Claim", font=("Helvetica", 10, "bold"), width=50, corner_radius=50, height=15)
+    button_reward.place(relx=0.8, rely=0.28)
 
-    button_reward = CTkButton(one_entry_frame, text="Claim", font=("Helvetica", 10, "bold"), width=50, corner_radius=40,height=20)
-    button_reward.grid(row=1, column=1, padx=(220, 0))
-    # Underline after each entry
-    label_line = CTkFrame(frame_task_list, bg_color="white", height=2, corner_radius=20)
-    label_line.pack(fill="x", padx=6)
+    label_line = CTkFrame(one_entry_frame, bg_color="gray", height=1, width= 380, corner_radius=20)
+    label_line.place(relx=0.01, rely=0.6)
 
 
 # WIDGETS ---------------------------------------/
@@ -54,7 +52,7 @@ entry_reward = CTkEntry(window, placeholder_text="Reward", font=("Helvetica", 13
 entry_reward.pack(pady=(5, 0))
 
 # Add button
-button_add = CTkButton(window, text="Add", font=("Helvetica", 12, "bold"), width=50, corner_radius=40, height=20, command=add_task)
+button_add = CTkButton(window, text="Add", font=("Helvetica", 13, "bold"), width=70, corner_radius=40, height=20, command=add_task)
 button_add.pack(pady=10)
 
 # Frame task list
