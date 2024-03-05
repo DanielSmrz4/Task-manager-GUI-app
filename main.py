@@ -13,7 +13,6 @@ window = CTk()
 window.geometry("400x450+1800+300")
 window.title("Taskman")
 window.resizable(False, False)
-window.iconbitmap("icon2.ico")
 
 
 # FUNCTIONS -----------------------------------------------------/
